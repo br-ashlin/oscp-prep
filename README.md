@@ -33,7 +33,7 @@ Below is a list of the machines highlighted as 'like OSCP machines', these are m
 
 Reference: [https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/](https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/)
 
-1. [Linux Machines](https://github.com/br-ashlin/oscp-prep/blob/main/hack-the-box/machines/linux.md\)
+1. [Linux Machines](https://github.com/br-ashlin/oscp-prep/blob/main/hack-the-box/machines/linux.md)
 2. [Windows Machines](https://github.com/br-ashlin/oscp-prep/blob/main/hack-the-box/machines/windows.md)
 
 ### HackerOne
