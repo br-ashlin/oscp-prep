@@ -6,7 +6,7 @@ description: >-
 
 # machines
 
-
+A listing of all of the machines that I have completed on Hack the Box in the past 12 months.
 
 | Machine Name | Date Completed      | Difficulty | Type    |
 | ------------ | ------------------- | ---------- | ------- |
