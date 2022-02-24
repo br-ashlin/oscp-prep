@@ -1,6 +1,6 @@
 # Table of contents
 
-* [hack-the-box-oscp-prep](README.md)
+* [OSCP Journey](README.md)
 * [hack-the-box](hack-the-box/README.md)
   * [machines](hack-the-box/machines/README.md)
     * [Linux](hack-the-box/machines/linux.md)
