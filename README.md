@@ -11,8 +11,6 @@ In 2021, I started my journey to OSCP by becoming a member of Hack The Box. I al
 For anyone intersted in my experience and areas of study prior to OSCP, I hold the following certifications: CCNA, MCSE, VCP-DCV-20, Sec+, Pentest+ & AZ-500 (Azure Security Engineer)
 
 
-I have considered undertaking as much of the Active machines on HacktheBox and will attempt to undertake some of the machines listed in  which I believe is very close if not the same as TJNull's List of Hack The Box OSCP like machines.
-
 
 ## Areas of Developement
 
@@ -33,12 +31,10 @@ I have a combined study plan amongst HackTheBox, HackerOne, TryHackMe, PortSwigg
 ### Hack The box
 Below is a list of the machines highlighted as 'like OSCP machines', these are mainly all retired now so for any that are still active I will complete and closer to exam time I will sign up HTB's VIP to complete some of the retired machines.
 
-Reference: 
-1. [https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/](https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/)
-2. 
+Reference: [https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/](https://pentestblog.in/oscp/hack-the-box-htb-oscp-like-machines-list-2022/)
 
-[Linux Machines](https://github.com/br-ashlin/OSCP-Preparation/blob/main/hack-the-box/readme/machines-1/linux.md)\
-[Windows Machines](https://github.com/br-ashlin/OSCP-Preparation/blob/main/hack-the-box/readme/machines-1/windows.md)
+1. [Linux Machines](https://github.com/br-ashlin/oscp-prep/blob/main/hack-the-box/machines/linux.md\)
+2. [Windows Machines](https://github.com/br-ashlin/oscp-prep/blob/main/hack-the-box/machines/windows.md)
 
 ### HackerOne
 For experience in Web Applications, I completed 13/26 rooms in the Hackerone CTF program.
