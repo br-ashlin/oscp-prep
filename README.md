@@ -6,7 +6,8 @@ It's always been my interest and intention of moving into Cyber Security, It was
 
 Since then I have worked in different areas of Cyber Security, Mostly within Active Directory, Azure and more across Privileged Identity Management and Governance.
 
-In 2021, I started my journey to OSCP by becoming a member of Hack The Box. I also began blogging on Medium when I wanted to confirm my understanding of the concepts I was working with, I love to teach but I also understand that if I can't explain it or teach it then I don't understand it enough.&#x20;
+In 2021, I started my journey to OSCP by becoming a member of Hack The Box, TryHackMe and HackerOne.
+I also began blogging on Medium when I wanted to confirm my understanding of the concepts I was working with. I love to teach and I understand that if I can't teach it, then I don't understand it enough.&#x20;
 
 For anyone intersted in my experience and areas of study prior to OSCP, I hold the following certifications: CCNA, MCSE, VCP-DCV-20, Sec+, Pentest+ & AZ-500 (Azure Security Engineer)
 
