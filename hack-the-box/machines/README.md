@@ -20,7 +20,7 @@ A listing of all of the machines that I have completed on Hack the Box so far.
 | Cap          | 29th July 2021      | Easy       | Linux   |
 | Search       | 20th Febrary 2022   | Hard       | Windows |
 
-Below is the list from TJ\_Null that is recommended for the OSCP exam.
+Below is the list from TJ\_Null that is recommended for the OSCP exam. I will be focussing on the December '21 updates whilst the boxes are still active. Upon completing I may sign up to VIP to attempt some of the retired boxes
 
 &#x20;[TJ\_Null has updated the list](https://twitter.com/TJ\_Null/status/1328380512960995331)&#x20;
 
