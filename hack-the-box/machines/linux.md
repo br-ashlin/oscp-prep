@@ -1,27 +1,12 @@
 # Linux
 
-| Machine Name | Date Complete | Difficulty |
-| ------------ | ------------- | ---------- |
-| BrainFuck\*  |               | Insane     |
-| Networked    |               |            |
-| Safe         |               |            |
-| Writeup      |               |            |
-| Swagshop     |               |            |
-| Help         |               |            |
-| Irked        |               |            |
-| Postman      |               |            |
-| Teacher      |               |            |
-| Curling      |               |            |
-| Fralic       |               |            |
-| Sunday       |               |            |
-| Valentine    |               |            |
-| Nibble       |               |            |
-| Based        |               |            |
-| Sense        |               |            |
-| Shcker       |               |            |
-| Mirai        |               |            |
-| Blocky       |               |            |
-| CronO.S      |               |            |
-| Shrek        |               |            |
-| Friendzone   |               |            |
-| SecNotes     |               |            |
+| Machine Name | Date Complete      | Difficulty |
+| ------------ | ------------------ | ---------- |
+| BrainFuck\*  |                    | Insane     |
+| ScriptKiddie | 15th February 2021 | Easy       |
+| Armageddon   | 27th Apil 2021     | Easy       |
+| Knife        | 2nd June 2021      | Easy       |
+| Monitors     |                    |            |
+| Dynstr       |                    |            |
+| Seal         |                    |            |
+| Pikaboo      |                    |            |
