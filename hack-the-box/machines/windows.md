@@ -2,19 +2,8 @@
 
 | Machine Name | Date Complete | Difficulty |
 | ------------ | ------------- | ---------- |
-| Bastion      |               |            |
-| Netmon       |               |            |
-| Jerry        |               |            |
-| Blue         |               |            |
-| Optimum      |               |            |
-| Granny       |               |            |
-| Devel        |               |            |
-| Artic        |               |            |
-| Active       |               |            |
-| Legacy       |               |            |
-| Sauna        |               |            |
-| Remote       |               |            |
-| Bastard      |               |            |
-| Heist        |               |            |
-| Silo         |               |            |
-|              |               |            |
+| Breadcrumbs  |               |            |
+| Love         | 21st May 2021 | Easy       |
+| PivotAPI     |               |            |
+| Intelligence |               |            |
+| Monteverde   |               |            |
