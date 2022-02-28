@@ -18,7 +18,7 @@ For anyone intersted in my experience and areas of study prior to OSCP, I hold t
 I have watched and read countless videos and articles on best preparation and even experiences and through my own experiences, I have identified the following areas that I believe I need to develop further in:
 
 1. Linux OS (I am a Windows guy but have been using Linux for 12m roughly now)
-2. Programming (I have a basic understanding of various programming languages that stem from studying Java at uni combined with my experiences in using Powershell but I want to get better)
+2. Programming (I have a basic understanding of various programming languages that stem from studying Java at uni combined with my experiences in using Powershell)
 3. Privilege escalation in Linux and Windows.
 
 For this I have recently enrolled into TCMs [Practical Network Penetration Tester](https://certifications.tcm-sec.com/pnpt/) learning path. 
