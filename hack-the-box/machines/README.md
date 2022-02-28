@@ -18,7 +18,8 @@ A listing of all of the machines that I have completed on Hack the Box so far.
 | Tenet        | 25th May 2021       | Medium     | Linux   |
 | Knife        | 2nd June 2021       | Easy       | Linux   |
 | Cap          | 29th July 2021      | Easy       | Linux   |
-| Search       | 20th Febrary 2022   | Hard       | Windows |
+| Search       | 20th February 2022  | Hard       | Windows |
+| Acute        | 28th February 2022  | Hard       | Windows |
 
 Below is the list from TJ\_Null that is recommended for the OSCP exam. I will be focussing on the December '21 updates whilst the boxes are still active. Upon completing I may sign up to VIP to attempt some of the retired boxes
 
