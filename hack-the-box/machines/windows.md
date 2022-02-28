@@ -7,5 +7,5 @@
 | PivotAPI     |               		 |            |
 | Intelligence |              		 |            |
 | Monteverde   |              		 |            |
-| Search       | 20th February 2022	 |	 Hard 	  |
-| Acute        | 28th February 2022  |	 Hard	  | 
+| Search       | 20th February, 2022	 |	 Hard 	  |
+| Acute        | 28th February, 2022  |	 Hard	  | 
