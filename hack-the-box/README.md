@@ -21,15 +21,7 @@
 | Search       | 20th February 2022  | Hard       | Windows |
 | Acute        | 28th February 2022  | Hard       | Windows |
 
-Below is the list from TJ\_Null that is recommended for the OSCP exam. I will be focussing on the December '21 updates whilst the boxes are still active. Upon completing I may sign up to VIP to attempt some of the retired boxes
 
-[TJ\_Null has updated the list](https://twitter.com/TJ\_Null/status/1328380512960995331)
 
-![](<../.gitbook/assets/TJNull List.JPG>)
 
-**Write-ups Completed**
-
-{% content-ref url="windows-boxes/search-writeup.md" %}
-[search-writeup.md](windows-boxes/search-writeup.md)
-{% endcontent-ref %}
 
