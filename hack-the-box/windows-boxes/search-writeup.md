@@ -1,6 +1,8 @@
-# Search
+# search-writeup-
 
-#### **Overview**
+## Search
+
+**Overview**
 
 ![](https://cdn-images-1.medium.com/max/800/1\*sBxy-nLlXYXMaA6J9TJd\_w.png)
 
@@ -20,7 +22,7 @@ In the spirit of Hack The Box, I have obfuscated any Usersnames / Passwords / Ha
 
 LDAP3, Ad-ldap-enum.py, SMBClient, SMBmap, Kerbrute, CrackMapExec, Ssconvert, Crackpkcs12, Powershell, Bloodhound-python, Bloodhound, GMSAdumper.py, Pth-Toolkit and of course, Nmap & Gobuster.
 
-#### Enumeration
+**Enumeration**
 
 Starting with Nmap.
 
