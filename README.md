@@ -30,6 +30,25 @@ I have a combined study plan amongst HackTheBox, HackerOne, TryHackMe, PortSwigg
 
 Below are the pages of the machines completed and also highlighted as ['like OSCP machines updated for '21'](https://twitter.com/TJ\_Null/status/1328380512960995331)
 
+| Updated Boxes for December 2021: |
+| -------------------------------- |
+| ScriptKiddie \[Linux]            |
+| BreadCrumbs \[Windows]           |
+| Armageddon \[Linux]              |
+| Love \[Windows]                  |
+| Knife \[Linux]                   |
+| Pit \[Linux]                     |
+| Monitors \[Linux]                |
+| Dynstr \[Linux]                  |
+| PivotAPI \[Windows]              |
+| Seal \[Linux]                    |
+| Intelligence \[Windows]          |
+| Pikaboo \[Linux]                 |
+| APT \[Windows]                   |
+| Monteverde \[Windows]            |
+
+I will be attempting to complete as many of these boxes as possible, along with any others currently Active in Hack the box. You can follow my progress here [hack-the-box](hack-the-box/ "mention")
+
 #### HackerOne
 
 For experience in Web Applications, I completed 13/26 rooms in the Hackerone CTF program.
