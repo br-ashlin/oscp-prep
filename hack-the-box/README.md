@@ -1,3 +1,7 @@
+---
+description: Lab machines completed
+---
+
 # machine-list
 
 **Linux**
@@ -17,12 +21,11 @@
 | Knife        | 2nd June 2021       | Easy       |
 | Cap          | 29th July 2021      | Easy       |
 
-
 **Windows**
 
-| Machine Name | Date Completed      | Difficulty |
-| ------------ | ------------------- | ---------- |
-| Worker       | 6th January 2021    | Medium     |
-| Love         | 21st May 2021       | Easy       |
-| Search       | 20th February 2022  | Hard       |
-| Acute        | 28th February 2022  | Hard       |
+| Machine Name | Date Completed     | Difficulty |
+| ------------ | ------------------ | ---------- |
+| Worker       | 6th January 2021   | Medium     |
+| Love         | 21st May 2021      | Easy       |
+| Search       | 20th February 2022 | Hard       |
+| Acute        | 28th February 2022 | Hard       |
