@@ -30,14 +30,6 @@ I have a combined study plan amongst HackTheBox, HackerOne, TryHackMe, PortSwigg
 
 Below are the pages of the machines completed and also highlighted as ['like OSCP machines updated for '21'](https://twitter.com/TJ\_Null/status/1328380512960995331)
 
-{% content-ref url="hack-the-box/linux-boxes.md" %}
-[linux-boxes.md](hack-the-box/linux-boxes.md)
-{% endcontent-ref %}
-
-{% content-ref url="hack-the-box/windows-boxes/" %}
-[windows-boxes](hack-the-box/windows-boxes/)
-{% endcontent-ref %}
-
 #### HackerOne
 
 For experience in Web Applications, I completed 13/26 rooms in the Hackerone CTF program.
