@@ -1,8 +1,4 @@
----
-description: Lab machines completed
----
-
-# machine-list
+# lab-machines
 
 **Linux**
 
