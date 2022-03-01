@@ -1,6 +1,6 @@
-# hack-the-box
+# machine-list
 
-**Machines Completed**
+**Linux**
 
 | Machine Name | Date Completed      | Difficulty | Type    |
 | ------------ | ------------------- | ---------- | ------- |
@@ -21,7 +21,7 @@
 | Search       | 20th February 2022  | Hard       | Windows |
 | Acute        | 28th February 2022  | Hard       | Windows |
 
-
+**Windows**
 
 
 
