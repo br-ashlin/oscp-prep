@@ -2,4 +2,6 @@
 
 * [README](README.md)
 * [hack-the-box](hack-the-box/README.md)
-  * [br-ashlin/oscp-prep](hack-the-box/br-ashlin-oscp-prep.md)
+  * [linux-boxes](hack-the-box/linux-boxes.md)
+* [windows-boxes](windows-boxes/README.md)
+  * [search-writeup-](windows-boxes/search-writeup.md)
