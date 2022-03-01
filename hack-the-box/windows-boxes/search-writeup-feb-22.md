@@ -1,5 +1,10 @@
 # search-writeup-feb-22
 
+
+
+```
+# search-writeup-feb-22
+
 ## Search
 
 **Overview**
@@ -268,3 +273,4 @@ I finished off this box by using smbget to retreive the root.txt file
 ![](https://cdn-images-1.medium.com/max/800/1\*n\_Rnqrlm23TPKe-ZpeifhA.png)
 
 \\
+```
