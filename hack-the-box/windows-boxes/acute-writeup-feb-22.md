@@ -238,7 +238,7 @@ python -m http.server 9090
 
 ![](<../../.gitbook/assets/image (1) (1).png>)
 
-![](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/image (17) (1).png>)
 
 From my Remote Powershell I download the payload to C:\Utils
 
