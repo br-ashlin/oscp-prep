@@ -2,7 +2,7 @@
 
 
 
-## Acute Writeup
+## Acute
 
 ![](../../.gitbook/assets/Acute.png)
 
@@ -74,11 +74,19 @@ On the /about.html page, there is an induction checklist for new starters in a .
 
 Under the Overview section there is a note "Walk new starter through the password change policy, they wil need to change it from the default Password1!" - Here's my first password.
 
+
+
 ![](<../../.gitbook/assets/image (32) (1).png>)
+
+
 
 Under First 3 Months, there is a section that provides a link to a "Remote training" site.
 
+
+
 ![](<../../.gitbook/assets/image (26).png>)
+
+
 
 Lastly, a note on the bottom advises: "\*Lois is the only authorized personnel to change Group Membership, Contact Lois to have this approved and changed if required. Only Lois can become site admin."
 
