@@ -165,7 +165,7 @@ netgroup
 
 ![](<../../.gitbook/assets/image (9) (1).png>)
 
-QWINSTA results advise that Edavies has a Console session running, This would be an interactive logon either via RDP or local logon. - Noted.
+QWINSTA results advise that User1 has a Console session running, This would be an interactive logon either via RDP or local logon. - Noted.
 
 Further enumeration
 
