@@ -148,19 +148,19 @@ whoami /priv
 whoami /groups
 klist
 qwinsta
-netgroup /local
-netgroup
+net group /domain
+net localgroup
 ```
 
-* **whoam:** Let's me know my current user
-* **hostname:** Tells me the hostname I am logged on to
+* **whoami:** Shows my current user
+* **hostname:** Hostname I am logged on to
 * **dir env:** Advises me of environmental values
 * **whoami /priv:** Local privileges for current user
 * **whoami /groups:** Local Groups that current user is a member of
 * **klist:** Provides information on any kerberos tickets cached
-* **winver:** Tells me the current Windows Version running
-* **qwinsta:** Lets me know of any other users logged in with a running session
-* **netgroup /local:** Shows Local Groups
+* **winver:** Windows Version running
+* **qwinsta:** Shows any other users logged in with a running session
+* **net localgroup:** Shows Local Groups
 * **netgroup /domain:** Shows Groups within the Domain - This failed.
 
 ![](<../../.gitbook/assets/image (9) (1).png>)
@@ -179,7 +179,7 @@ Get-ChildItem (gci) allows me to search for all Files on C:\ with a name that en
 * **Path:** When using path can use wildcards to search for file types, such as .txt, .ini, .log, .ps1
 * **Recurse:** Recursively search through Folders
 * **Depth:** Search 2 levels deep (result bloat)
-* **Force:**
+* **Force:** Shows hidden files
 * **Erroraction:** Use with SilentlyContinue to not display errors and to continue even when an error occurs.
 * **Select:** To avoid verbose output, use select with Name & Directory to filter the results.
 
@@ -205,7 +205,7 @@ Lastly, I will use the last gci cmdlet.
  Get-Childitem C:\*.txt -Recurse -Hidden -Depth 2 -Force -Erroraction SilentlyContinue | Select Directory, Name >> gci-c-hidden.txt
 ```
 
-This time I use the \* **Hidden** switch, This will return only results of all files that are marked as hidden.
+This time I use the \* **Hidden** switch, This will return only files that are marked as hidden.
 
 ![](<../../.gitbook/assets/image (2) (1).png>)
 
