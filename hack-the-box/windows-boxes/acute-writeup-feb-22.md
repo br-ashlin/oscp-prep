@@ -217,7 +217,7 @@ Browsing to C:\Utils and running 'Dir -Force' shows me of any other hidden files
 
 Using Get-content I can view the data: "Directory for Testing Files without Defender" - So I know that this PC is running Defender but also has Whitelisted this directory for files to run.
 
-Referring back to my notes, I still need to try and view what is on the RDP/Console session for Edavies. The best method I can think of at the time is to use Meterpreter.
+Referring back to my notes, I still need to try and view what is on the RDP/Console session for User1. The best method I can think of at the time is to use Meterpreter.
 
 From \~/HTB/Acute, I run the following:
 
@@ -251,7 +251,6 @@ There are a couple different methods you can use to download files over HTTP, su
 * **wget**
 * **invoke-webrequest**
 * **curl**
-* \*\*
 
 ![](<../../.gitbook/assets/image (19).png>)
 
@@ -265,7 +264,7 @@ Once connected, I use 'screenshare' to save a html file where I can view the des
 
 ![](<../../.gitbook/assets/image (15).png>)
 
-When viewing the screen, the user edavies is attempting to Connect to the ATSSERVER via WINRM. He uses.
+When viewing the screen, user1 is attempting to Connect to the ATSSERVER via WINRM. He uses.
 
 ```
 $username = "acute\user2"
