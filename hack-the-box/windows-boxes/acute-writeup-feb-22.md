@@ -461,7 +461,7 @@ Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential 
 
 ![](<../../.gitbook/assets/image (32).png>)
 
-Result is root.xt at C:\users\administrator\desktop\ and user.txt in imonks\desktop.
+Result is root.xt at C:\users\administrator\desktop\\&#x20;
 
 cat root.txt and I've owned system.
 
