@@ -84,9 +84,13 @@ After manually verifying each directory, I enumerate the plugins folder.
 
 ![](<../../.gitbook/assets/image (38).png>)
 
+
+
 There doesn't appear to be much available for this plugin, but after going back a level I find ebook-download.
 
 ![](<../../.gitbook/assets/image (20).png>)
+
+
 
 Review the readme, version is 1.1
 
@@ -102,19 +106,29 @@ Info suggests that this plugin is vulnerable for Directory traversal by using /f
 
 For this, I check what users are present on the box, Cron jobs & Processes.
 
-![/etc/passwd](<../../.gitbook/assets/image (9).png>)
+![](<../../.gitbook/assets/image (9).png>)
 
-![/etc/crontab](<../../.gitbook/assets/image (11).png>)
+/etc/passwd
 
-![/Processes 1-1000 Fuzzed](<../../.gitbook/assets/image (22).png>)
+![/](<../../.gitbook/assets/image (11).png>)
 
-![Ref: https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/](<../../.gitbook/assets/image (31).png>)
+etc/crontab
+
+![](<../../.gitbook/assets/image (22).png>)
+
+/Processes 1-1000 Fuzzed
+
+![](<../../.gitbook/assets/image (31).png>)
+
+Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/](https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/)
 
 **View Individual Processes**
 
-![gdbserver](<../../.gitbook/assets/image (3).png>)
+![](<../../.gitbook/assets/image (3).png>)
 
+**gdbserver**
 
+****
 
 After discovering GDB Server running on port 1337, I'm back at Searchsploit looking for any vulnerabilities.
 
@@ -132,15 +146,19 @@ Cat out the commandline and edit based on IP address and local port.
 
 Setting up my listener and running the script.
 
-![Netcat listener and User Flag](<../../.gitbook/assets/image (37).png>)
+![](<../../.gitbook/assets/image (37).png>)
 
-![Output of script.](<../../.gitbook/assets/image (32).png>)
+Netcat listener and User Flag
+
+![](<../../.gitbook/assets/image (32).png>)
+
+Output of script.
 
 ### Gain an Initial Foothold (SSH) <a href="#4e59" id="4e59"></a>
 
 Now that I have a way in, I will generate my SSH key-pair and drop the Public cert content into the 'authorized Users' folder on Backdoor under User.
 
-![Contents of pub.cer](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/image (17).png>)
 
 Copying contents of .pub to 'authorized users' using echo.
 
@@ -150,7 +168,7 @@ Connecting to Backdoor via SSH using my private key, authenticating as 'user'
 
 ![](<../../.gitbook/assets/image (30).png>)
 
-![FootHold](<../../.gitbook/assets/image (24).png>)
+![](<../../.gitbook/assets/image (24).png>)
 
 
 
