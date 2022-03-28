@@ -156,11 +156,11 @@ Output of script.
 
 ### Gain an Initial Foothold (SSH) <a href="#4e59" id="4e59"></a>
 
-Now that I have a way in, I will generate my SSH key-pair and drop the Public cert content into the 'authorized Users' folder on Backdoor under User.
+Now that I have a way in, I will generate my SSH key-pair and drop the Public cert content into the 'authorized Keys' folder on Backdoor under User.
 
 ![](<../../.gitbook/assets/image (17).png>)
 
-Copying contents of .pub to 'authorized users' using echo.
+Copying contents of .pub to 'Authorized Keys' using echo.
 
 ![](<../../.gitbook/assets/image (15).png>)
 
