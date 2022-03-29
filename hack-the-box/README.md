@@ -4,7 +4,7 @@ _Hyperlinked Machine names have write-ups_
 
 ### _2022_
 
-_\*\*\*\*_
+****
 
 | Machine Name                                       | Date Completed | Difficulty | OS      |
 | -------------------------------------------------- | -------------- | ---------- | ------- |
