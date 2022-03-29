@@ -70,7 +70,7 @@ I make a list of the names as firstname.lastname in a user.txt file.
 
 On the /about.html page, there is an induction checklist for new starters in a .docx format.
 
-![](<../../.gitbook/assets/image (7).png>)
+![](<../../.gitbook/assets/image (1) (1).png>)
 
 Under the Overview section there is a note "Walk new starter through the password change policy, they wil need to change it from the default Password1!" - Here's my first password.
 
@@ -183,7 +183,7 @@ Get-ChildItem (gci) allows me to search for all Files on C:\ with a name that en
 * **Erroraction:** Use with SilentlyContinue to not display errors and to continue even when an error occurs.
 * **Select:** To avoid verbose output, use select with Name & Directory to filter the results.
 
-![](<../../.gitbook/assets/image (16) (1).png>)
+![](<../../.gitbook/assets/image (22) (1).png>)
 
 Get-Content allows me to read files with data in them such as .txt, .ini, .log., .ps1 **findstr /i Password:** Find String with a value of "Password" within the text file. /i means case-insensitive.
 

@@ -2,29 +2,31 @@
 
 _Hyperlinked Machine names have write-ups_
 
-**Linux**
+### _2022_
 
-| Machine Name                                       | Date Completed      | Difficulty |
-| -------------------------------------------------- | ------------------- | ---------- |
-| Delivery                                           | 12th January 2021   | Easy       |
-| Time                                               | 19th January 2021   | Medium     |
-| Dcotor                                             | 25th January 2021   | Easy       |
-| Ready                                              | 5th February 2021   | Medium     |
-| Academy                                            | 12th February 2021  | Easy       |
-| ScriptKiddie                                       | 15th Februrary 2021 | Easy       |
-| Passage                                            | 23rd February 2021  | Medium     |
-| Spectra                                            | 6th April 2021      | Easy       |
-| Amargeddon                                         | 27th April 2021     | Easy       |
-| Tenet                                              | 25th May 2021       | Medium     |
-| Knife                                              | 2nd June 2021       | Easy       |
-| Cap                                                | 29th July 2021      | Easy       |
-| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md) | 26th March 2021     | Easy       |
+| Machine Name                                       | Date Completed | Difficulty | OS      |
+| -------------------------------------------------- | -------------- | ---------- | ------- |
+| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md) | 26th March     | Easy       | Linux   |
+| [Acute](windows-boxes/acute-writeup-feb-22.md)     | 28th Feb       | Hard       | Windows |
+| [Search](windows-boxes/search-writeup-feb-22.md)   | 20th Feb       | Hard       | Windows |
 
-**Windows**
+### _2021_
 
-| Machine Name                                     | Date Completed     | Difficulty |
-| ------------------------------------------------ | ------------------ | ---------- |
-| Worker                                           | 6th January 2021   | Medium     |
-| Love                                             | 21st May 2021      | Easy       |
-| [Search](windows-boxes/search-writeup-feb-22.md) | 20th February 2022 | Hard       |
-| [Acute](windows-boxes/acute-writeup-feb-22.md)   | 28th February 2022 | Hard       |
+****
+
+| Machine Name | Date Completed | Difficulty | OS      |
+| ------------ | -------------- | ---------- | ------- |
+| Worker       | 6th Jan        | Medium     | Windows |
+| Delivery     | 12th January   | Easy       | Linux   |
+| Time         | 19th January   | Medium     | Linux   |
+| Dcotor       | 25th January   | Easy       | Linux   |
+| Ready        | 5th February   | Medium     | Linux   |
+| Academy      | 12th February  | Easy       | Linux   |
+| ScriptKiddie | 15th Februrary | Easy       | Linux   |
+| Passage      | 23rd February  | Medium     | Linux   |
+| Spectra      | 6th April      | Easy       | Linux   |
+| Amargeddon   | 27th April     | Easy       | Linux   |
+| Love         | 21st May 2021  | Easy       | Windows |
+| Tenet        | 25th May       | Medium     | Linux   |
+| Knife        | 2nd June       | Easy       | Linux   |
+| Cap          | 29th July      | Easy       | Linux   |
