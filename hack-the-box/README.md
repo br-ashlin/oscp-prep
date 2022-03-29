@@ -6,7 +6,7 @@ _Hyperlinked Machine names have write-ups_
 
 | Machine Name                                       | Date Completed | Difficulty | OS      |
 | -------------------------------------------------- | -------------- | ---------- | ------- |
-| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md) | 26th March     | Easy       | Linux   |
+| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md) | 26th Mar       | Easy       | Linux   |
 | [Acute](windows-boxes/acute-writeup-feb-22.md)     | 28th Feb       | Hard       | Windows |
 | [Search](windows-boxes/search-writeup-feb-22.md)   | 20th Feb       | Hard       | Windows |
 
@@ -16,7 +16,7 @@ _Hyperlinked Machine names have write-ups_
 
 | Machine Name | Date Completed | Difficulty | OS      |
 | ------------ | -------------- | ---------- | ------- |
-| Worker       | 6th Jan        | Medium     | Windows |
+| Worker       | 6th January    | Medium     | Windows |
 | Delivery     | 12th January   | Easy       | Linux   |
 | Time         | 19th January   | Medium     | Linux   |
 | Dcotor       | 25th January   | Easy       | Linux   |
@@ -26,7 +26,7 @@ _Hyperlinked Machine names have write-ups_
 | Passage      | 23rd February  | Medium     | Linux   |
 | Spectra      | 6th April      | Easy       | Linux   |
 | Amargeddon   | 27th April     | Easy       | Linux   |
-| Love         | 21st May 2021  | Easy       | Windows |
+| Love         | 21st May       | Easy       | Windows |
 | Tenet        | 25th May       | Medium     | Linux   |
 | Knife        | 2nd June       | Easy       | Linux   |
 | Cap          | 29th July      | Easy       | Linux   |
