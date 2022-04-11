@@ -4,7 +4,7 @@
 
 ## Backdoor
 
-![](<../../.gitbook/assets/image (6).png>)
+![](<../../.gitbook/assets/image (6) (1).png>)
 
 ### Reconnaissance <a href="#6b46" id="6b46"></a>
 
@@ -39,7 +39,7 @@ nmap -Pn -p- -sC -sV -A backdoor.htb > nmap-initial.txt
 
 ![](<../../.gitbook/assets/image (2).png>)
 
-![](<../../.gitbook/assets/image (26) (1).png>)
+![](<../../.gitbook/assets/image (26) (1) (1).png>)
 
 We get back the following result showing that 4 ports are open:
 
@@ -56,7 +56,7 @@ Using **Whatweb**, I can confirm what web application is running, in comparison 
 
 Looking for any vunerabilities for Wordpress 5.8.1 using **Searchsploit**.&#x20;
 
-![](<../../.gitbook/assets/image (5).png>)
+![](<../../.gitbook/assets/image (5) (1).png>)
 
 
 
@@ -70,7 +70,7 @@ With the knowledge that the CMS is Wordpress, I use **WPscan** to enumerate for 
 
 I've made a note of the Plugin 'akismet' and the location at /wp-content/plugins/akismet and the version. **Searchsploit** doesn't have anything available for this version.
 
-![](<../../.gitbook/assets/image (35) (1).png>)
+![](<../../.gitbook/assets/image (35) (1) (1).png>)
 
 **GoBuster** for futher enumeration of directories, as well as manual verification.
 
@@ -118,7 +118,7 @@ etc/crontab
 
 /Processes 1-1000 Fuzzed
 
-![](<../../.gitbook/assets/image (31).png>)
+![](<../../.gitbook/assets/image (31) (1).png>)
 
 Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/](https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/)
 
@@ -138,15 +138,15 @@ Based on the result, I am going for RCE.
 
 ![](<../../.gitbook/assets/image (14).png>)
 
-![Usage](<../../.gitbook/assets/image (34) (1).png>)
+![Usage](<../../.gitbook/assets/image (34) (1) (1).png>)
 
 Cat out the commandline and edit based on IP address and local port.
 
-![](<../../.gitbook/assets/image (1).png>)
+![](<../../.gitbook/assets/image (1) (1).png>)
 
 Setting up my listener and running the script.
 
-![](<../../.gitbook/assets/image (37).png>)
+![](<../../.gitbook/assets/image (37) (1).png>)
 
 Netcat listener and User Flag
 
@@ -158,17 +158,17 @@ Output of script.
 
 Now that I have a way in, I will generate my SSH key-pair and drop the Public cert content into the 'authorized Keys' folder on Backdoor under User.
 
-![](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/image (17) (1).png>)
 
 Copying contents of .pub to 'Authorized Keys' using echo.
 
-![](<../../.gitbook/assets/image (15) (1).png>)
+![](<../../.gitbook/assets/image (15) (1) (1).png>)
 
 Connecting to Backdoor via SSH using my private key, authenticating as 'user'
 
 ![](<../../.gitbook/assets/image (30).png>)
 
-![](<../../.gitbook/assets/image (24).png>)
+![](<../../.gitbook/assets/image (24) (1).png>)
 
 
 
@@ -180,11 +180,11 @@ using htop and combination of + u to select processes running under root.
 
 After reviewing each process individually, Process 849 looks like a potenial target (Screen)
 
-![](<../../.gitbook/assets/image (25).png>)
+![](<../../.gitbook/assets/image (25) (1).png>)
 
 Checking out the Screen manual page
 
-![](<../../.gitbook/assets/image (36) (1).png>)
+![](<../../.gitbook/assets/image (36) (1) (1).png>)
 
 Viewing current screens
 
@@ -192,8 +192,8 @@ Viewing current screens
 
 Switching screens to Root
 
-![](<../../.gitbook/assets/image (8).png>)
+![](<../../.gitbook/assets/image (8) (1).png>)
 
-![](<../../.gitbook/assets/image (33) (1).png>)
+![](<../../.gitbook/assets/image (33) (1) (1).png>)
 
 Root flag found

