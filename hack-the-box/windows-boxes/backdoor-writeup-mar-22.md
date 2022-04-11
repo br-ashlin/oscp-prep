@@ -1,10 +1,14 @@
-# Timelapse-writeup-apr-22
+# timelapse-writeup-apr-22
 
+## Timelapse
 
+![T](../../.gitbook/assets/Screenshot-2022-03-31-at-08.25.15-e1648686344730.png)
 
-## Backdoor
+Timelapse was fun, I did parts of it over a 2-day period where I could find the time.
 
-![](../../.gitbook/assets/Screenshot-2022-03-31-at-08.25.15-e1648686344730.png)
+I found Timelapse to be realistic for enumeration. I had to take some time to understand using a extended authentication for WinRM.
+
+I don't consider the privilege escalation to be realistic but nonetheless, having an understanding of the technologies in use made this quite easy after gaining a foothold
 
 ## Reconnaissance <a href="#6b46" id="6b46"></a>
 
