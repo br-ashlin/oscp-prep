@@ -39,7 +39,7 @@ nmap -Pn -p- -sC -sV -A backdoor.htb > nmap-initial.txt
 
 ![](<../../.gitbook/assets/image (2).png>)
 
-![](<../../.gitbook/assets/image (26).png>)
+![](<../../.gitbook/assets/image (26) (1).png>)
 
 We get back the following result showing that 4 ports are open:
 
@@ -66,19 +66,19 @@ With the knowledge that the CMS is Wordpress, I use **WPscan** to enumerate for 
 
 ![](<../../.gitbook/assets/image (23).png>)
 
-![](<../../.gitbook/assets/image (16).png>)
+![](<../../.gitbook/assets/image (16) (1).png>)
 
 I've made a note of the Plugin 'akismet' and the location at /wp-content/plugins/akismet and the version. **Searchsploit** doesn't have anything available for this version.
 
-![](<../../.gitbook/assets/image (35).png>)
+![](<../../.gitbook/assets/image (35) (1).png>)
 
 **GoBuster** for futher enumeration of directories, as well as manual verification.
 
-![](<../../.gitbook/assets/image (4).png>)
+![](<../../.gitbook/assets/image (4) (1).png>)
 
 The only directories I can traverse at this stage is /wp-content. I run **GoBuster** again and use a bigger wordlist.
 
-![](<../../.gitbook/assets/image (13).png>)
+![](<../../.gitbook/assets/image (28).png>)
 
 After manually verifying each directory, I enumerate the plugins folder.
 
@@ -124,7 +124,7 @@ Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/
 
 **View Individual Processes**
 
-![](<../../.gitbook/assets/image (3).png>)
+![](<../../.gitbook/assets/image (3) (1).png>)
 
 **gdbserver**
 
@@ -138,7 +138,7 @@ Based on the result, I am going for RCE.
 
 ![](<../../.gitbook/assets/image (14).png>)
 
-![Usage](<../../.gitbook/assets/image (34).png>)
+![Usage](<../../.gitbook/assets/image (34) (1).png>)
 
 Cat out the commandline and edit based on IP address and local port.
 
@@ -162,7 +162,7 @@ Now that I have a way in, I will generate my SSH key-pair and drop the Public ce
 
 Copying contents of .pub to 'Authorized Keys' using echo.
 
-![](<../../.gitbook/assets/image (15).png>)
+![](<../../.gitbook/assets/image (15) (1).png>)
 
 Connecting to Backdoor via SSH using my private key, authenticating as 'user'
 
@@ -180,11 +180,11 @@ using htop and combination of + u to select processes running under root.
 
 After reviewing each process individually, Process 849 looks like a potenial target (Screen)
 
-![](<../../.gitbook/assets/image (21).png>)
+![](<../../.gitbook/assets/image (25).png>)
 
 Checking out the Screen manual page
 
-![](<../../.gitbook/assets/image (36).png>)
+![](<../../.gitbook/assets/image (36) (1).png>)
 
 Viewing current screens
 
@@ -194,6 +194,6 @@ Switching screens to Root
 
 ![](<../../.gitbook/assets/image (8).png>)
 
-![](<../../.gitbook/assets/image (33).png>)
+![](<../../.gitbook/assets/image (33) (1).png>)
 
 Root flag found
