@@ -4,17 +4,16 @@ _Hyperlinked Machine names have write-ups_
 
 ### _2022_
 
-****
+***
 
-| Machine Name                                       | Date Completed | Difficulty | OS      |
-| -------------------------------------------------- | -------------- | ---------- | ------- |
-| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md) | 26th Mar       | Easy       | Linux   |
-| [Acute](windows-boxes/acute-writeup-feb-22.md)     | 28th Feb       | Hard       | Windows |
-| [Search](windows-boxes/search-writeup-feb-22.md)   | 20th Feb       | Hard       | Windows |
+| Machine Name                                          | Date Completed | Difficulty | OS      |
+| ----------------------------------------------------- | -------------- | ---------- | ------- |
+| [Backdoor](linux-boxes/backdoor-writeup-mar-22.md)    | 26th Mar       | Easy       | Linux   |
+| [Acute](windows-boxes/acute-writeup-feb-22.md)        | 28th Feb       | Hard       | Windows |
+| [Search](windows-boxes/search-writeup-feb-22.md)      | 20th Feb       | Hard       | Windows |
+| [Timelapse](windows-boxes/backdoor-writeup-mar-22.md) | 10 Apr         | Easy       | Windows |
 
 ### _2021_
-
-****
 
 | Machine Name | Date Completed | Difficulty | OS      |
 | ------------ | -------------- | ---------- | ------- |
