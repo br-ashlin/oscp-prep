@@ -51,12 +51,8 @@ I will be attempting to complete as many of these boxes as possible, along with 
 
 #### HackerOne
 
-For experience in Web Applications, I completed 13/26 rooms in the Hackerone CTF program.
-
-#### TryHackMe
-
-I began undertaking the THM Offensive path, I am also aware of the Web & Foundations Path.
+For experience in Web Applications, I completed 11/26 rooms in the Hackerone CTF program.
 
 #### Port Swigger Academy
 
-I often reference and do labs in PortSwigger to gain a better understanding of XSS, SQLi and other forms of Web application vulnerabilities and exploits.
+I often reference to gain a better understanding of XSS, SQLi and other forms of Web application vulnerabilities and exploits.
