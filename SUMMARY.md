@@ -8,4 +8,4 @@
     * [acute-writeup-feb-22](hack-the-box/windows-boxes/acute-writeup-feb-22.md)
     * [search-writeup-feb-22](hack-the-box/windows-boxes/search-writeup-feb-22.md)
     * [timelapse-writeup-apr-22](hack-the-box/windows-boxes/timelapse-writeup-apr-22.md)
-    * [hathor-writeup-may-2](hack-the-box/windows-boxes/timelapse-writeup-apr-22-1.md)
+    * [hathor-writeup-may-22](hack-the-box/windows-boxes/hathor-writeup-may-22.md)
