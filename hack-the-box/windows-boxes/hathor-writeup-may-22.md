@@ -1,4 +1,4 @@
-# hathor-writeup-may-2
+# hathor-writeup-may-22
 
 ## Hathor
 
@@ -7,12 +7,6 @@
 Hathor, The most difficult box to date for me. In a nutshell, Hathor is a Domain Controller running Mojo Portal (CMS).&#x20;
 
 Hathor is owned through numerous footholds that exploits Input Sanitisation, DLL Hijacking, Scheduled Tasks and Hijacking existing Powershell scripts.
-
-The initial foothold is gained through getting Admin access to the CMS via Default Credentials and exploiting a section of the 'File Manager' that does not perform input sanatisation, allowing arbirtrary files to be uploaded and called upon through the browsing to the directory.
-
-The second foothold is gained through DLL hijacking that is available on a Share that needs to be mounted from 'Stored Credentials' discovered during enumeration through the initial foothold.
-
-
 
 ## Reconnaissance <a href="#6b46" id="6b46"></a>
 
@@ -237,6 +231,8 @@ It took me a couple goes on trying to find a location where the CMS would allow 
 ![](<../../.gitbook/assets/image (12).png>)
 
 ### Initial foothold
+
+The initial foothold is gained through getting Admin access to the CMS via Default Credentials and exploiting a section of the 'File Manager' that does not perform input sanatisation, allowing arbirtrary files to be uploaded and called upon through the browsing to the directory.
 
 ![](<../../.gitbook/assets/image (34).png>)
 
