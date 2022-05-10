@@ -149,7 +149,7 @@ get LAPS_OperationsGuide.docx
 get TechnicalSpecification.docx
 ```
 
-![](<../../.gitbook/assets/image (34) (1).png>)
+![](<../../.gitbook/assets/image (34) (1) (1).png>)
 
 ![](<../../.gitbook/assets/image (7) (1).png>)
 
@@ -178,13 +178,13 @@ john --wordlist=/usr/share/wordlist/rockyou.txt zip-hash.txt
 * **John:** John-The-Ripper
 * **--wordlist=:** Wordlist location / Wordlist to use - Rockyou.txt
 
-![](<../../.gitbook/assets/image (37).png>)
+![](<../../.gitbook/assets/image (37) (1).png>)
 
 Using the password from the .zip, I can now extract the PFX file.
 
-![](<../../.gitbook/assets/image (16).png>)
+![](<../../.gitbook/assets/image (16) (1).png>)
 
-legacyy\_dev_auth.pfx - The name of this PFX suggest it's used for authentication, given that it's contained within the winrm_backup.zip, I am guessing it's used for winrm. Also, the name legacyy is spelt incorrectly. I am also assuming that this may be a user on Timelapse that is used for Dev.
+legacyy\_dev\_auth.pfx - The name of this PFX suggest it's used for authentication, given that it's contained within the winrm\_backup.zip, I am guessing it's used for winrm. Also, the name legacyy is spelt incorrectly. I am also assuming that this may be a user on Timelapse that is used for Dev.
 
 I use crackpkcs12 for my cracking encrypted pfx & p12 files.
 
@@ -195,7 +195,7 @@ crackpkcs12 -d /usr/share/wordlist/rockyou.txt legacyy_dev_auth.pfx -v
 * **-d:** Dictionary Wordlist
 * **-v:** Verbose mode
 
-![](<../../.gitbook/assets/image (33).png>)
+![](<../../.gitbook/assets/image (33) (2).png>)
 
 Given the name of the certificate, I have made a note that these are potential credentials:
 
@@ -245,7 +245,7 @@ conn = WinRM::Connection.new(
 )
 ```
 
-![](<../../.gitbook/assets/image (5).png>)
+![](<../../.gitbook/assets/image (5) (1).png>)
 
 ### Foothold - WinRM
 
@@ -255,7 +255,7 @@ Now that I'm in, time for further enumeration.
 
 I check what users are present in C:\Users.
 
-![](<../../.gitbook/assets/image (17).png>)
+![](<../../.gitbook/assets/image (17) (1).png>)
 
 * **Administrator**
 * **Legacyy (current)**
@@ -269,15 +269,15 @@ I get access denied to all of these profiles.
 
 After some thorough enumeration, I come across the ConsoleHost\_history.txt file under Legacyy's profile.
 
-![](<../../.gitbook/assets/image (34).png>)
+![](<../../.gitbook/assets/image (34) (1).png>)
 
 The screenshot above shows that legaccy is attempting to invoke a command on the localhost under a different user account (svc\_deploy). The variable $p provides the password in clear text.
 
 I copy and paste the output and edit my Ruby script with the new credentials and hash out the certificate requirements
 
-![](<../../.gitbook/assets/image (8).png>)
+![](<../../.gitbook/assets/image (8) (1).png>)
 
-![](<../../.gitbook/assets/image (31).png>)
+![](<../../.gitbook/assets/image (31) (1).png>)
 
 ### Privilege Escalation
 

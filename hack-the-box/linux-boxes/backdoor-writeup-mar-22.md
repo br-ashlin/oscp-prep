@@ -1,7 +1,5 @@
 # backdoor-writeup-mar-22
 
-
-
 ## Backdoor
 
 ![](<../../.gitbook/assets/image (6) (1).png>)
@@ -48,17 +46,13 @@ We get back the following result showing that 4 ports are open:
 * **Port 1337:** waste?
 * **Port 444**4: krb524
 
-
-
 Using **Whatweb**, I can confirm what web application is running, in comparison to **nmap**.
 
-![](<../../.gitbook/assets/image (10).png>)
+![](<../../.gitbook/assets/image (10) (1).png>)
 
-Looking for any vunerabilities for Wordpress 5.8.1 using **Searchsploit**.&#x20;
+Looking for any vunerabilities for Wordpress 5.8.1 using **Searchsploit**.
 
-![](<../../.gitbook/assets/image (5) (1).png>)
-
-
+![](<../../.gitbook/assets/image (5) (1) (1).png>)
 
 ### Enumeration <a href="#64a0" id="64a0"></a>
 
@@ -66,7 +60,7 @@ With the knowledge that the CMS is Wordpress, I use **WPscan** to enumerate for 
 
 ![](<../../.gitbook/assets/image (23).png>)
 
-![](<../../.gitbook/assets/image (16) (1).png>)
+![](<../../.gitbook/assets/image (16) (1) (1).png>)
 
 I've made a note of the Plugin 'akismet' and the location at /wp-content/plugins/akismet and the version. **Searchsploit** doesn't have anything available for this version.
 
@@ -78,39 +72,35 @@ I've made a note of the Plugin 'akismet' and the location at /wp-content/plugins
 
 The only directories I can traverse at this stage is /wp-content. I run **GoBuster** again and use a bigger wordlist.
 
-![](<../../.gitbook/assets/image (13).png>)
+![](<../../.gitbook/assets/image (28).png>)
 
 After manually verifying each directory, I enumerate the plugins folder.
 
-![](<../../.gitbook/assets/image (38).png>)
-
-
+![](<../../.gitbook/assets/image (38) (1).png>)
 
 There doesn't appear to be much available for this plugin, but after going back a level I find ebook-download.
 
-![](<../../.gitbook/assets/image (20).png>)
-
-
+![](<../../.gitbook/assets/image (20) (1).png>)
 
 Review the readme, version is 1.1
 
-![](<../../.gitbook/assets/image (18).png>)
+![](<../../.gitbook/assets/image (18) (1).png>)
 
 **Searchsploit** has me covered here,
 
-![](<../../.gitbook/assets/image (19).png>)
+![](<../../.gitbook/assets/image (19) (1).png>)
 
-![](<../../.gitbook/assets/image (39).png>)
+![](<../../.gitbook/assets/image (39) (1).png>)
 
 Info suggests that this plugin is vulnerable for Directory traversal by using /filedownload.php?ebookdownloadurl=\<Input>
 
 For this, I check what users are present on the box, Cron jobs & Processes.
 
-![](<../../.gitbook/assets/image (9).png>)
+![](<../../.gitbook/assets/image (9) (1).png>)
 
 /etc/passwd
 
-![/](<../../.gitbook/assets/image (11).png>)
+![/](<../../.gitbook/assets/image (11) (1).png>)
 
 etc/crontab
 
@@ -118,7 +108,7 @@ etc/crontab
 
 /Processes 1-1000 Fuzzed
 
-![](<../../.gitbook/assets/image (31) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1).png>)
 
 Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/](https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/)
 
@@ -128,17 +118,17 @@ Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/
 
 **gdbserver**
 
-****
+***
 
 After discovering GDB Server running on port 1337, I'm back at Searchsploit looking for any vulnerabilities.
 
-![](<../../.gitbook/assets/image (27).png>)
+![](<../../.gitbook/assets/image (27) (1).png>)
 
 Based on the result, I am going for RCE.
 
-![](<../../.gitbook/assets/image (14).png>)
+![](<../../.gitbook/assets/image (14) (1).png>)
 
-![Usage](<../../.gitbook/assets/image (34) (1) (1).png>)
+![Usage](<../../.gitbook/assets/image (34) (1) (1) (1).png>)
 
 Cat out the commandline and edit based on IP address and local port.
 
@@ -146,11 +136,11 @@ Cat out the commandline and edit based on IP address and local port.
 
 Setting up my listener and running the script.
 
-![](<../../.gitbook/assets/image (37) (1).png>)
+![](<../../.gitbook/assets/image (37) (1) (1).png>)
 
 Netcat listener and User Flag
 
-![](<../../.gitbook/assets/image (32).png>)
+![](<../../.gitbook/assets/image (32) (1).png>)
 
 Output of script.
 
@@ -158,7 +148,7 @@ Output of script.
 
 Now that I have a way in, I will generate my SSH key-pair and drop the Public cert content into the 'authorized Keys' folder on Backdoor under User.
 
-![](<../../.gitbook/assets/image (17) (1).png>)
+![](<../../.gitbook/assets/image (17) (1) (1).png>)
 
 Copying contents of .pub to 'Authorized Keys' using echo.
 
@@ -166,33 +156,31 @@ Copying contents of .pub to 'Authorized Keys' using echo.
 
 Connecting to Backdoor via SSH using my private key, authenticating as 'user'
 
-![](<../../.gitbook/assets/image (30).png>)
+![](<../../.gitbook/assets/image (30) (1).png>)
 
 ![](<../../.gitbook/assets/image (24) (1).png>)
-
-
 
 ### Privilage Escalation
 
 using htop and combination of + u to select processes running under root.
 
-![](<../../.gitbook/assets/image (29).png>)
+![](<../../.gitbook/assets/image (29) (1).png>)
 
 After reviewing each process individually, Process 849 looks like a potenial target (Screen)
 
-![](<../../.gitbook/assets/image (21).png>)
+![](<../../.gitbook/assets/image (25) (1).png>)
 
 Checking out the Screen manual page
 
-![](<../../.gitbook/assets/image (36) (1) (1).png>)
+![](<../../.gitbook/assets/image (36) (1) (1) (1).png>)
 
 Viewing current screens
 
-![](<../../.gitbook/assets/image (12).png>)
+![](<../../.gitbook/assets/image (12) (1).png>)
 
 Switching screens to Root
 
-![](<../../.gitbook/assets/image (8) (1).png>)
+![](<../../.gitbook/assets/image (8) (1) (1).png>)
 
 ![](<../../.gitbook/assets/image (33) (1) (1).png>)
 

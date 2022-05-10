@@ -1,7 +1,5 @@
 # acute-writeup-feb-22
 
-
-
 ## Acute
 
 ![](../../.gitbook/assets/Acute.png)
@@ -34,7 +32,7 @@ nmap -sC -sV acute.htb > nmap-initial.txt
 * **-sC**: run default nmap scripts
 * **-sV**: detect service version
 
-![](<../../.gitbook/assets/image (29) (1).png>)
+![](<../../.gitbook/assets/image (29) (1) (1).png>)
 
 We get back the following result showing that 1 port is open:
 
@@ -50,43 +48,33 @@ Browsing to https://acute.htb.local gave nothing but the Certificate.
 
 Upon inspection, I already have the subject alternate name (SANs) and common name from the nmap results.
 
-![](<../../.gitbook/assets/image (30) (1).png>)
+![](<../../.gitbook/assets/image (30) (1) (1).png>)
 
 I try my luck with https://atsserver.acute.local
 
 I get back a webpage, this is positive.
 
-
-
-![](<../../.gitbook/assets/image (21) (1) (1).png>)
+![](<../../.gitbook/assets/image (21) (1) (1) (1).png>)
 
 I view the page source code, There's nothing of interest to be found here.
 
 Under /about.html there is a section on "who we work with" and within this text there are some names.
 
-![](<../../.gitbook/assets/image (31) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1) (1).png>)
 
 I make a list of the names as firstname.lastname in a user.txt file.
 
 On the /about.html page, there is an induction checklist for new starters in a .docx format.
 
-![](<../../.gitbook/assets/image (1) (1) (2) (2).png>)
+![](<../../.gitbook/assets/image (1) (1) (2) (1) (1) (1).png>)
 
 Under the Overview section there is a note "Walk new starter through the password change policy, they wil need to change it from the default Password1!" - Here's my first password.
 
-
-
-![](<../../.gitbook/assets/image (32) (1) (1).png>)
-
-
+![](<../../.gitbook/assets/image (32) (1) (1) (1).png>)
 
 Under First 3 Months, there is a section that provides a link to a "Remote training" site.
 
-
-
 ![](<../../.gitbook/assets/image (26) (1) (1) (1).png>)
-
-
 
 Lastly, a note on the bottom advises: "\*Lois is the only authorized personnel to change Group Membership, Contact Lois to have this approved and changed if required. Only Lois can become site admin."
 
@@ -102,7 +90,7 @@ I also use exiftool to view the metadata of the docx.
 exiftool New_Starter_Checklist_v7.docx
 ```
 
-![](<../../.gitbook/assets/image (12) (1).png>)
+![](<../../.gitbook/assets/image (12) (1) (1).png>)
 
 The results provide me with the following:
 
@@ -163,7 +151,7 @@ net localgroup
 * **net localgroup:** Shows Local Groups
 * **netgroup /domain:** Shows Groups within the Domain - This failed.
 
-![](<../../.gitbook/assets/image (9) (1) (1).png>)
+![](<../../.gitbook/assets/image (9) (1) (1) (1).png>)
 
 QWINSTA results advise that User1 has a Console session running, This would be an interactive logon either via RDP or local logon. - Noted.
 
@@ -183,7 +171,7 @@ Get-ChildItem (gci) allows me to search for all Files on C:\ with a name that en
 * **Erroraction:** Use with SilentlyContinue to not display errors and to continue even when an error occurs.
 * **Select:** To avoid verbose output, use select with Name & Directory to filter the results.
 
-![](<../../.gitbook/assets/image (16) (1) (1).png>)
+![](<../../.gitbook/assets/image (16) (1) (1) (1) (1).png>)
 
 Get-Content allows me to read files with data in them such as .txt, .ini, .log., .ps1 **findstr /i Password:** Find String with a value of "Password" within the text file. /i means case-insensitive.
 
@@ -238,7 +226,7 @@ python -m http.server 9090
 
 ![](<../../.gitbook/assets/image (1) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (17) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (17) (1) (1) (1) (1).png>)
 
 From my Remote Powershell I download the payload to C:\Utils
 
@@ -252,7 +240,7 @@ There are a couple different methods you can use to download files over HTTP, su
 * **invoke-webrequest**
 * **curl**
 
-![](<../../.gitbook/assets/image (19) (1).png>)
+![](<../../.gitbook/assets/image (19) (1) (1).png>)
 
 After the reverse.exe has been saved to C:\Utils, I need to setup my meterpreter listener.
 
@@ -290,7 +278,7 @@ To test the credentials, I know I cannot enter-pssession but I can try invoke-co
 Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential $creds -command {whoami} 
 ```
 
-![](<../../.gitbook/assets/image (5) (1) (1).png>)
+![](<../../.gitbook/assets/image (5) (1) (1) (1).png>)
 
 The result returns: acute\user2. - This is successful, I have confirmed the password.
 
@@ -309,7 +297,7 @@ Under C:\Program Files\ there is a directory named 'keepmeon' - I haven't seen t
 
 Upon trying to CD into keepmeon, I am denied access.
 
-![](<../../.gitbook/assets/image (8) (1) (1).png>)
+![](<../../.gitbook/assets/image (8) (1) (1) (1).png>)
 
 I continue to enumerate accounts.
 
@@ -331,7 +319,7 @@ Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential 
 
 * **net group /domain:** Provides memberships of the Managers Group. user2 and user3 are the only users of the managers group.
 
-![](<../../.gitbook/assets/image (18) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1).png>)
 
 Enumerate groups on ATSSERVER
 
@@ -341,7 +329,7 @@ invoke-command -computername ATSSERVER -configurationname dc_manage -credential 
 
 * **net group:** Will provide Domain Groups if run from a DC.
 
-![](<../../.gitbook/assets/image (21) (1).png>)
+![](<../../.gitbook/assets/image (21) (1) (1).png>)
 
 I use my gci to search for any files of interest under the current user
 
@@ -385,19 +373,19 @@ Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage  -credential
 
 Now this script will call the reverse shell, I run my meterpreter listener again and call the script using invoke-command.
 
-![](<../../.gitbook/assets/image (10) (1).png>)
+![](<../../.gitbook/assets/image (10) (1) (1).png>)
 
 * Success. My meterpreter listerner is now connected to ATSSERVER. using whoami /groups. I can see that user4 is part of the 'Builtin\Administrators' group.
 
-![](<../../.gitbook/assets/image (18) (1) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1) (1).png>)
 
-&#x20;Using meterpretyer 'getsystem' I can escalate my privileges.
+Using meterpretyer 'getsystem' I can escalate my privileges.
 
-![](<../../.gitbook/assets/image (14) (1).png>)
+![](<../../.gitbook/assets/image (14) (1) (1).png>)
 
 I am now NT AUTHORITY\SYSTEM with a shell.
 
-![](<../../.gitbook/assets/image (20) (1).png>)
+![](<../../.gitbook/assets/image (20) (1) (1).png>)
 
 I dump the hashes of the box and crack them with Rockyou.txt. The password is super simple and I add it to my passwords.txt list.
 
@@ -408,7 +396,6 @@ I test my credentials with the administrator account through the use of invoke-c
 I refer back to my username.txt and check for any password re-use amongst the accouts. Upon my first attempt, I am successful with user3.
 
 ```
-
 $username = "user3"
 $password = "xxx"
 $secureStringPwd = ConvertTo-SecureString $password -AsPlainText -Force
@@ -417,7 +404,7 @@ $creds = New-Object System.Management.Automation.PSCredential ($username, $secur
 Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential $creds -command {whoami}
 ```
 
-I now go back to checking C:\Program Fies\keepmeon as user3, and I have access. Within keepmeon, there is a.bat file, I use 'cat' again to check the contents.&#x20;
+I now go back to checking C:\Program Fies\keepmeon as user3, and I have access. Within keepmeon, there is a.bat file, I use 'cat' again to check the contents.
 
 There is a line \`\`\`text REM This is run every 5 minutes. For Lois use ONLY
 
@@ -431,7 +418,7 @@ I know from our Domain Group enumeration that the Site Admins group is named 'Si
 
 I can create a .bat file that will add user3 to the site\_admins group. Knowing that I cannot create and download the file, I will need to create it through Powershell.
 
-![](<../../.gitbook/assets/image (31) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {Set-Content -Path 'c:\program files\Keepmeon\admin.bat' -Value 'net group site_admin user3 /add /domain'}
@@ -459,9 +446,8 @@ Confirmed, user3 is now part of the site\_admins group. Time to enumerate.
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {get-childitem -path C:\users\*.txt -Recurse -Depth 2 -ErrorAction SilentlyContinue}
 ```
 
-![](<../../.gitbook/assets/image (32) (1).png>)
+![](<../../.gitbook/assets/image (32) (1) (1).png>)
 
-Result is root.xt at C:\users\administrator\desktop\\&#x20;
+Result is root.xt at C:\users\administrator\desktop\\
 
 cat root.txt and I've owned system.
-
