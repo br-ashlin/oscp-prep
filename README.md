@@ -2,7 +2,7 @@
 
 ### Introduction
 
-Hi there, My name is Ben and I have worked as a Systems Engineer consistently for 10+ years.
+My name is Ben and I have worked as a Systems Engineer consistently for 10+ years.
 
 It's always been my interest and intention of moving into Cyber Security, It was around 2016 I reached out to my connections on LinkedIn and asked the basic question.. What do I need to get into this Cyber? I recieved a flurry of responses, majority of which were: "Get your OSCP".
 
