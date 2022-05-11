@@ -72,7 +72,7 @@ I've made a note of the Plugin 'akismet' and the location at /wp-content/plugins
 
 The only directories I can traverse at this stage is /wp-content. I run **GoBuster** again and use a bigger wordlist.
 
-![](<../../.gitbook/assets/image (28).png>)
+![](<../../.gitbook/assets/image (13) (2).png>)
 
 After manually verifying each directory, I enumerate the plugins folder.
 
@@ -168,7 +168,7 @@ using htop and combination of + u to select processes running under root.
 
 After reviewing each process individually, Process 849 looks like a potenial target (Screen)
 
-![](<../../.gitbook/assets/image (25) (1).png>)
+![](<../../.gitbook/assets/image (21) (1).png>)
 
 Checking out the Screen manual page
 

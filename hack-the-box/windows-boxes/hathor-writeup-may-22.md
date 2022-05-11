@@ -336,7 +336,7 @@ Browsing the Directory, The Directory, there are a couple of .exe files and a Sc
 
 Scripts DIR.
 
-![](<../../.gitbook/assets/image (5).png>)
+![](<../../.gitbook/assets/image (31) (1).png>)
 
 ### Processes
 
@@ -454,7 +454,7 @@ Set-AuthenticodeSignature -FilePath Get-bADPasswords.ps1 -Certificate $codeCerti
 
 Adding Certificate to Store
 
-![](<../../.gitbook/assets/image (43).png>)
+![](<../../.gitbook/assets/image (40).png>)
 
 Verifying Certificate in Store
 

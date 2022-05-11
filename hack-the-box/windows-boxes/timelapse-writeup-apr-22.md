@@ -151,7 +151,7 @@ get TechnicalSpecification.docx
 
 ![](<../../.gitbook/assets/image (34) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (7) (1) (1).png>)
+![](<../../.gitbook/assets/image (33) (1).png>)
 
 ZIP file is protected with a password but the contents show a PFX.
 
@@ -220,7 +220,7 @@ Whilst extracting the key, it will request to supply a new PEM pass phrase. (Yes
 
 ![](<../../.gitbook/assets/image (26) (1).png>)
 
-![](<../../.gitbook/assets/image (15).png>)
+![](<../../.gitbook/assets/image (1) (2).png>)
 
 Attempting to connect over WINRM failed for me when trying to use evil-winrm. I secured a Ruby script from [https://book.hacktricks.xyz/pentesting/5985-5986-pentesting-winrm](https://book.hacktricks.xyz/pentesting/5985-5986-pentesting-winrm) to edit.
 
