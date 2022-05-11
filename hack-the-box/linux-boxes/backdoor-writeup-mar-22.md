@@ -2,7 +2,7 @@
 
 ## Backdoor
 
-![](<../../.gitbook/assets/image (6) (1).png>)
+![](<../../.gitbook/assets/image (6) (1) (1).png>)
 
 ### Reconnaissance <a href="#6b46" id="6b46"></a>
 
@@ -37,7 +37,7 @@ nmap -Pn -p- -sC -sV -A backdoor.htb > nmap-initial.txt
 
 ![](<../../.gitbook/assets/image (2).png>)
 
-![](<../../.gitbook/assets/image (26) (1) (1).png>)
+![](<../../.gitbook/assets/image (26) (1) (1) (1).png>)
 
 We get back the following result showing that 4 ports are open:
 
@@ -84,13 +84,13 @@ There doesn't appear to be much available for this plugin, but after going back 
 
 Review the readme, version is 1.1
 
-![](<../../.gitbook/assets/image (18) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1).png>)
 
 **Searchsploit** has me covered here,
 
 ![](<../../.gitbook/assets/image (19) (1).png>)
 
-![](<../../.gitbook/assets/image (39) (1).png>)
+![](<../../.gitbook/assets/image (39) (1) (1).png>)
 
 Info suggests that this plugin is vulnerable for Directory traversal by using /filedownload.php?ebookdownloadurl=\<Input>
 
@@ -100,7 +100,7 @@ For this, I check what users are present on the box, Cron jobs & Processes.
 
 /etc/passwd
 
-![/](<../../.gitbook/assets/image (11) (1).png>)
+![/](<../../.gitbook/assets/image (11) (1) (1).png>)
 
 etc/crontab
 
@@ -108,7 +108,7 @@ etc/crontab
 
 /Processes 1-1000 Fuzzed
 
-![](<../../.gitbook/assets/image (31) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1).png>)
 
 Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/](https://www.netspi.com/blog/technical/web-application-penetration-testing/directory-traversal-file-inclusion-proc-file-system/)
 
@@ -122,7 +122,7 @@ Ref: [https://www.netspi.com/blog/technical/web-application-penetration-testing/
 
 After discovering GDB Server running on port 1337, I'm back at Searchsploit looking for any vulnerabilities.
 
-![](<../../.gitbook/assets/image (27) (1).png>)
+![](<../../.gitbook/assets/image (27) (1) (1).png>)
 
 Based on the result, I am going for RCE.
 
@@ -140,7 +140,7 @@ Setting up my listener and running the script.
 
 Netcat listener and User Flag
 
-![](<../../.gitbook/assets/image (32) (1).png>)
+![](<../../.gitbook/assets/image (32) (1) (1).png>)
 
 Output of script.
 
@@ -156,7 +156,7 @@ Copying contents of .pub to 'Authorized Keys' using echo.
 
 Connecting to Backdoor via SSH using my private key, authenticating as 'user'
 
-![](<../../.gitbook/assets/image (30) (1).png>)
+![](<../../.gitbook/assets/image (30) (1) (1).png>)
 
 ![](<../../.gitbook/assets/image (24) (1).png>)
 

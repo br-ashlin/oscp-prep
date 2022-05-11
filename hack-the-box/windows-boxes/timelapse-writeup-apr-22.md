@@ -151,7 +151,7 @@ get TechnicalSpecification.docx
 
 ![](<../../.gitbook/assets/image (34) (1) (1).png>)
 
-![](<../../.gitbook/assets/image (7) (1).png>)
+![](<../../.gitbook/assets/image (7) (1) (1).png>)
 
 ZIP file is protected with a password but the contents show a PFX.
 
@@ -167,7 +167,7 @@ zip2john winrm_backup.zip > zip-hash.txt
 
 * zip2john \<file.zip> > \<hash file output>
 
-![](<../../.gitbook/assets/image (26) (1).png>)
+![](<../../.gitbook/assets/image (26) (1) (1).png>)
 
 Cracking the hash with John-The-Ripper.
 
@@ -195,7 +195,7 @@ crackpkcs12 -d /usr/share/wordlist/rockyou.txt legacyy_dev_auth.pfx -v
 * **-d:** Dictionary Wordlist
 * **-v:** Verbose mode
 
-![](<../../.gitbook/assets/image (33) (2).png>)
+![](<../../.gitbook/assets/image (33) (2) (1).png>)
 
 Given the name of the certificate, I have made a note that these are potential credentials:
 
@@ -218,7 +218,7 @@ Whilst extracting the key & cert, it will prompt for the password of the PFX.
 
 Whilst extracting the key, it will request to supply a new PEM pass phrase. (Yes there is a typo in my file names)
 
-![](<../../.gitbook/assets/image (26).png>)
+![](<../../.gitbook/assets/image (26) (1).png>)
 
 ![](<../../.gitbook/assets/image (15).png>)
 
@@ -249,7 +249,7 @@ conn = WinRM::Connection.new(
 
 ### Foothold - WinRM
 
-![](<../../.gitbook/assets/image (7).png>)
+![](<../../.gitbook/assets/image (7) (1).png>)
 
 Now that I'm in, time for further enumeration.
 
@@ -277,7 +277,7 @@ I copy and paste the output and edit my Ruby script with the new credentials and
 
 ![](<../../.gitbook/assets/image (8) (1).png>)
 
-![](<../../.gitbook/assets/image (31) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1).png>)
 
 ### Privilege Escalation
 
@@ -290,7 +290,7 @@ Get-ADComputer -Filter * | Select Name, Enabled, SamAccountName
 
 ![](<../../.gitbook/assets/image (35).png>)
 
-![](<../../.gitbook/assets/image (6).png>)
+![](<../../.gitbook/assets/image (6) (1).png>)
 
 * **Administrator:** Domain Admins, Enterprise Admins, Schema Admins
 * **Guest:** Not interested
@@ -309,7 +309,7 @@ Get-ADComputer -Filter * -Properties * | Select Name, ms-Mcs-AdmPwd
 
 * **ms-Mcs-AdmPwd:** This is the AD Attribute where the password is stored.
 
-![](<../../.gitbook/assets/image (25).png>)
+![](<../../.gitbook/assets/image (25) (2).png>)
 
 Now I have the Administrators password, time to go back and reconfigure my Ruby script.
 

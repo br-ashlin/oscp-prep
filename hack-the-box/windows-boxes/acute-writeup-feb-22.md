@@ -48,7 +48,7 @@ Browsing to https://acute.htb.local gave nothing but the Certificate.
 
 Upon inspection, I already have the subject alternate name (SANs) and common name from the nmap results.
 
-![](<../../.gitbook/assets/image (30) (1) (1).png>)
+![](<../../.gitbook/assets/image (30) (1) (1) (1).png>)
 
 I try my luck with https://atsserver.acute.local
 
@@ -60,7 +60,7 @@ I view the page source code, There's nothing of interest to be found here.
 
 Under /about.html there is a section on "who we work with" and within this text there are some names.
 
-![](<../../.gitbook/assets/image (31) (1) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1) (1) (1).png>)
 
 I make a list of the names as firstname.lastname in a user.txt file.
 
@@ -70,11 +70,11 @@ On the /about.html page, there is an induction checklist for new starters in a .
 
 Under the Overview section there is a note "Walk new starter through the password change policy, they wil need to change it from the default Password1!" - Here's my first password.
 
-![](<../../.gitbook/assets/image (32) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (32) (1) (1) (1) (1).png>)
 
 Under First 3 Months, there is a section that provides a link to a "Remote training" site.
 
-![](<../../.gitbook/assets/image (26) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (26) (1) (1) (1) (1).png>)
 
 Lastly, a note on the bottom advises: "\*Lois is the only authorized personnel to change Group Membership, Contact Lois to have this approved and changed if required. Only Lois can become site admin."
 
@@ -111,7 +111,7 @@ Using usernames.txt and Password1 against atsserver.acute.local and acute-pc01.a
 
 I finally get a foodhold.
 
-![](<../../.gitbook/assets/image (6) (1) (1).png>)
+![](<../../.gitbook/assets/image (6) (1) (1) (1).png>)
 
 ### Some quick enumeration
 
@@ -319,7 +319,7 @@ Invoke-Command -computername ATSSERVER -ConfigurationName dc_manage -credential 
 
 * **net group /domain:** Provides memberships of the Managers Group. user2 and user3 are the only users of the managers group.
 
-![](<../../.gitbook/assets/image (18) (1) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1) (1).png>)
 
 Enumerate groups on ATSSERVER
 
@@ -377,7 +377,7 @@ Now this script will call the reverse shell, I run my meterpreter listener again
 
 * Success. My meterpreter listerner is now connected to ATSSERVER. using whoami /groups. I can see that user4 is part of the 'Builtin\Administrators' group.
 
-![](<../../.gitbook/assets/image (18) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (18) (1) (1) (1) (1).png>)
 
 Using meterpretyer 'getsystem' I can escalate my privileges.
 
@@ -418,7 +418,7 @@ I know from our Domain Group enumeration that the Site Admins group is named 'Si
 
 I can create a .bat file that will add user3 to the site\_admins group. Knowing that I cannot create and download the file, I will need to create it through Powershell.
 
-![](<../../.gitbook/assets/image (31) (1) (1) (1).png>)
+![](<../../.gitbook/assets/image (31) (1) (1) (1) (1).png>)
 
 ```
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {Set-Content -Path 'c:\program files\Keepmeon\admin.bat' -Value 'net group site_admin user3 /add /domain'}
@@ -446,7 +446,7 @@ Confirmed, user3 is now part of the site\_admins group. Time to enumerate.
 Invoke-Command -ComputerName ATSSERVER -ConfigurationName dc_manage -Credential $creds -ScriptBlock {get-childitem -path C:\users\*.txt -Recurse -Depth 2 -ErrorAction SilentlyContinue}
 ```
 
-![](<../../.gitbook/assets/image (32) (1) (1).png>)
+![](<../../.gitbook/assets/image (32) (1) (1) (1).png>)
 
 Result is root.xt at C:\users\administrator\desktop\\
 
